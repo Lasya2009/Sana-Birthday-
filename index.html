@@ -1,0 +1,1586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday 💌</title>
+
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+
+  background: linear-gradient(
+    -45deg,
+    #ffd1e8,
+    #ff9ecb,
+    #ffb3da,
+    #ffc2e0
+  );
+
+  background-size: 400% 400%;
+  animation: gradientShift 12s ease infinite;
+
+  font-family: 'Segoe UI', 'Comic Sans MS', sans-serif;
+  text-align: center;
+
+  overflow-x: hidden;
+
+  color: #7a1049;
+
+  padding-bottom: 60px;
+
+  position: relative;
+}
+
+
+/* =========================
+   BACKGROUND
+========================= */
+
+@keyframes gradientShift {
+
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+
+}
+
+
+/* =========================
+   STARS
+========================= */
+
+.star {
+
+  position: fixed;
+
+  color: white;
+
+  pointer-events: none;
+
+  z-index: 0;
+
+  animation: twinkle ease-in-out infinite;
+}
+
+
+@keyframes twinkle {
+
+  0%,
+  100% {
+    opacity: 0.15;
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 0.9;
+    transform: scale(1.2);
+  }
+
+}
+
+
+/* =========================
+   TITLE
+========================= */
+
+h1 {
+
+  padding-top: 40px;
+
+  font-size: 2.5em;
+
+  text-shadow: 2px 2px 0 white;
+
+  position: relative;
+
+  z-index: 2;
+
+}
+
+
+.wiggle {
+
+  display: inline-block;
+
+  animation: wiggle 2s ease-in-out infinite;
+
+}
+
+
+@keyframes wiggle {
+
+  0%,
+  100% {
+    transform: rotate(-6deg);
+  }
+
+  50% {
+    transform: rotate(6deg);
+  }
+
+}
+
+
+/* =========================
+   CAKE
+========================= */
+
+.cake {
+
+  font-size: 3em;
+
+  cursor: pointer;
+
+  display: inline-block;
+
+  transition: transform 0.2s;
+
+  user-select: none;
+
+  position: relative;
+
+  z-index: 2;
+
+}
+
+
+.cake:hover {
+
+  transform: scale(1.15) rotate(-5deg);
+
+}
+
+
+.cake:active {
+
+  transform: scale(0.9);
+
+}
+
+
+.hint {
+
+  font-size: 0.85em;
+
+  opacity: 0.7;
+
+  margin-top: -5px;
+
+  position: relative;
+
+  z-index: 2;
+
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.buttons {
+
+  margin: 30px 0;
+
+  position: relative;
+
+  z-index: 2;
+
+}
+
+
+button {
+
+  background: #ff5da2;
+
+  border: none;
+
+  color: white;
+
+  padding: 15px 30px;
+
+  margin: 10px;
+
+  font-size: 1.1em;
+
+  border-radius: 30px;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 5px 15px rgba(255, 93, 162, 0.5);
+
+  transition: transform 0.2s;
+
+}
+
+
+button:hover {
+
+  transform: scale(1.08);
+
+}
+
+
+/* =========================
+   MUSIC PLAYER
+========================= */
+
+.player {
+
+  display: none;
+
+  max-width: 320px;
+
+  margin: 10px auto 0;
+
+  background: white;
+
+  border-radius: 20px;
+
+  padding: 14px 20px;
+
+  box-shadow:
+    0 8px 18px rgba(0,0,0,0.15);
+
+  align-items: center;
+
+  gap: 10px;
+
+  position: relative;
+
+  z-index: 2;
+
+}
+
+
+.player.show {
+
+  display: flex;
+
+}
+
+
+.player button {
+
+  margin: 0;
+
+  padding: 10px 14px;
+
+  font-size: 1em;
+
+}
+
+
+.progress-wrap {
+
+  flex: 1;
+
+  height: 6px;
+
+  background: #ffd6ea;
+
+  border-radius: 10px;
+
+  overflow: hidden;
+
+}
+
+
+.progress-bar {
+
+  height: 100%;
+
+  width: 0%;
+
+  background: #ff5da2;
+
+}
+
+
+/* =========================
+   LETTER
+========================= */
+
+.letter-box {
+
+  display: none;
+
+  max-width: 500px;
+
+  margin: 30px auto;
+
+  background: white;
+
+  border-radius: 20px;
+
+  padding: 30px;
+
+  box-shadow:
+    0 10px 25px rgba(0,0,0,0.2);
+
+  font-size: 1.1em;
+
+  line-height: 1.6em;
+
+  text-align: left;
+
+  white-space: pre-wrap;
+
+  position: relative;
+
+  z-index: 5;
+
+  min-height: 40px;
+
+}
+
+
+.letter-box.show {
+
+  display: block;
+
+}
+
+
+.cursor {
+
+  display: inline-block;
+
+  width: 2px;
+
+  background: #7a1049;
+
+  animation: blink 0.8s steps(1) infinite;
+
+}
+
+
+@keyframes blink {
+
+  50% {
+    opacity: 0;
+  }
+
+}
+
+
+/* =========================
+   PHOTOS
+   HIDDEN UNTIL LETTER
+========================= */
+
+.photos {
+
+  margin-top: 60px;
+
+  position: relative;
+
+  z-index: 2;
+
+  display: none;
+
+  opacity: 0;
+
+  transform: translateY(30px);
+
+}
+
+
+.photos.show {
+
+  display: block;
+
+  animation: photosAppear 1.2s ease forwards;
+
+}
+
+
+@keyframes photosAppear {
+
+  from {
+
+    opacity: 0;
+
+    transform: translateY(30px);
+
+  }
+
+  to {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+  }
+
+}
+
+
+.photos h2 {
+
+  font-size: 1.6em;
+
+}
+
+
+.photo-grid {
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  justify-content: center;
+
+  gap: 15px;
+
+  padding: 0 20px;
+
+}
+
+
+.photo-grid img {
+
+  width: 220px;
+
+  height: 220px;
+
+  object-fit: cover;
+
+  border-radius: 15px;
+
+  border: 5px solid white;
+
+  box-shadow:
+    0 6px 15px rgba(0,0,0,0.2);
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+
+}
+
+
+.photo-grid img:hover {
+
+  transform:
+    scale(1.04)
+    rotate(-1deg);
+
+  box-shadow:
+    0 10px 25px rgba(0,0,0,0.25);
+
+}
+
+
+/* =========================
+   LIGHTBOX
+========================= */
+
+.lightbox {
+
+  display: none;
+
+  position: fixed;
+
+  inset: 0;
+
+  background: rgba(0,0,0,0.75);
+
+  z-index: 2000;
+
+  align-items: center;
+
+  justify-content: center;
+
+}
+
+
+.lightbox.show {
+
+  display: flex;
+
+}
+
+
+.lightbox img {
+
+  max-width: 90vw;
+
+  max-height: 85vh;
+
+  border-radius: 12px;
+
+  border: 6px solid white;
+
+}
+
+
+/* =========================
+   WISH SECTION
+========================= */
+
+.wish-section {
+
+  margin-top: 60px;
+
+  position: relative;
+
+  z-index: 2;
+
+}
+
+
+.wish-section input {
+
+  padding: 12px 16px;
+
+  border-radius: 20px;
+
+  border: 2px solid #ff9ecb;
+
+  font-size: 1em;
+
+  width: 70%;
+
+  max-width: 300px;
+
+  outline: none;
+
+}
+
+
+.wish-reply {
+
+  margin-top: 15px;
+
+  font-size: 1.1em;
+
+  min-height: 1.5em;
+
+  color: #a30060;
+
+}
+
+
+/* =========================
+   FINAL LINE
+========================= */
+
+.final-line {
+
+  margin-top: 50px;
+
+  font-size: 1.3em;
+
+  font-style: italic;
+
+  color: #a30060;
+
+  position: relative;
+
+  z-index: 2;
+
+}
+
+
+/* =========================
+   FALLING HEARTS
+========================= */
+
+.falling {
+
+  position: fixed;
+
+  top: -50px;
+
+  font-size: 24px;
+
+  pointer-events: none;
+
+  z-index: 999;
+
+  animation: fall linear forwards;
+
+}
+
+
+@keyframes fall {
+
+  to {
+
+    transform:
+      translateY(110vh)
+      rotate(360deg);
+
+    opacity: 0.9;
+
+  }
+
+}
+
+
+/* =========================
+   PARTY POPPERS
+========================= */
+
+.popper {
+
+  position: fixed;
+
+  font-size: 28px;
+
+  pointer-events: none;
+
+  z-index: 999;
+
+  animation:
+    burst 1.2s ease-out forwards;
+
+}
+
+
+@keyframes burst {
+
+  0% {
+
+    transform:
+      translate(0,0)
+      scale(0.5);
+
+    opacity: 1;
+
+  }
+
+  100% {
+
+    transform:
+      translate(var(--x),var(--y))
+      scale(1.2);
+
+    opacity: 0;
+
+  }
+
+}
+
+
+/* =========================
+   BALLOONS
+========================= */
+
+.balloon {
+
+  position: fixed;
+
+  bottom: -80px;
+
+  font-size: 40px;
+
+  pointer-events: none;
+
+  z-index: 1;
+
+  animation:
+    floatUp linear forwards;
+
+  opacity: 0.85;
+
+}
+
+
+@keyframes floatUp {
+
+  to {
+
+    transform:
+      translateY(-115vh)
+      translateX(var(--drift));
+
+    opacity: 0.9;
+
+  }
+
+}
+
+
+/* =========================
+   SPARKLE CURSOR
+========================= */
+
+.sparkle {
+
+  position: fixed;
+
+  pointer-events: none;
+
+  font-size: 14px;
+
+  z-index: 998;
+
+  animation:
+    sparkleFade 0.7s ease-out forwards;
+
+}
+
+
+@keyframes sparkleFade {
+
+  to {
+
+    transform:
+      translateY(-20px)
+      scale(0.4);
+
+    opacity: 0;
+
+  }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+  h1 {
+
+    font-size: 2em;
+
+    padding-left: 15px;
+
+    padding-right: 15px;
+
+  }
+
+
+  .letter-box {
+
+    margin-left: 15px;
+
+    margin-right: 15px;
+
+    padding: 22px;
+
+    font-size: 1em;
+
+  }
+
+
+  .photo-grid img {
+
+    width: 150px;
+
+    height: 150px;
+
+  }
+
+
+  button {
+
+    padding: 13px 22px;
+
+  }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- ======================================================
+     ✏️ EDIT ONLY THIS BLOCK
+====================================================== -->
+
+<script>
+
+const photos = [
+
+  "photo1.jpg",
+
+  "photo2.jpg",
+
+  "photo3.jpg"
+
+];
+
+
+const musicFile = "my-baby.mp3";
+
+
+const letterText = `My dearest Sana,
+
+I wanted to make something little but special for you. You mean so much to me, and I'm really grateful for every moment we've shared together.
+
+By the way you may not be the girl who can make fake stones for a project but you are definietly the girl who can make my worst days joyfull, Love you and Thank you so much for always standing by my side whenever I needed you .
+
+I hope we make many more beautiful memories together. 💗 Happiest Birthday kuchupuchu
+
+I love you,Wishing you the happiest of birthdays 🎉
+
+With love,
+Lasya💋`;
+
+</script>
+
+
+<!-- ======================================================
+     MAIN PAGE
+====================================================== -->
+
+
+<h1>
+  Happy Birthday CR 💋😝 !
+  <span class="wiggle">🎂</span>
+  💖
+</h1>
+
+
+<div class="cake" onclick="cakeTap()">
+  🎂
+</div>
+
+
+<div class="hint">
+  (tap the cake for a surprise)
+</div>
+
+
+<div class="buttons">
+
+  <button onclick="openLetter()">
+    Open Letter 💌
+  </button>
+
+  <button onclick="toggleMusic()">
+    Play Music 🎵
+  </button>
+
+</div>
+
+
+<!-- MUSIC PLAYER -->
+
+<div class="player" id="player">
+
+  <button
+    onclick="toggleMusic()"
+    id="playPauseBtn">
+    ▶️
+  </button>
+
+  <div class="progress-wrap">
+
+    <div
+      class="progress-bar"
+      id="progressBar">
+    </div>
+
+  </div>
+
+</div>
+
+
+<audio id="audio"></audio>
+
+
+<!-- LETTER -->
+
+<div
+  class="letter-box"
+  id="letterBox">
+</div>
+
+
+<!-- PHOTOS -->
+
+<div
+  class="photos"
+  id="photosSection">
+
+  <h2>
+    Our Memories 📸
+  </h2>
+
+  <div
+    class="photo-grid"
+    id="photoGrid">
+  </div>
+
+</div>
+
+
+<!-- WISH -->
+
+<div class="wish-section">
+
+  <h2>
+    Make a Wish ✨
+  </h2>
+
+  <input
+    type="text"
+    id="wishInput"
+    placeholder="Type your wish..."
+  >
+
+  <button onclick="makeWish()">
+    Send Wish 🌠
+  </button>
+
+  <div
+    class="wish-reply"
+    id="wishReply">
+  </div>
+
+</div>
+
+
+<!-- LIGHTBOX -->
+
+<div
+  class="lightbox"
+  id="lightbox"
+  onclick="closeLightbox()">
+
+  <img
+    id="lightboxImg"
+    src=""
+    alt="Memory">
+
+</div>
+
+
+<p class="final-line">
+
+  Here's to another year of you being absolutely amazing. 🥂✨
+  Your presents are waiting for you 😝🎁🪄
+
+</p>
+
+
+<script>
+
+
+/* ======================================================
+   BACKGROUND STARS
+====================================================== */
+
+for (let i = 0; i < 30; i++) {
+
+  const s = document.createElement("div");
+
+  s.className = "star";
+
+  s.textContent = "✦";
+
+  s.style.left =
+    Math.random() * 100 + "vw";
+
+  s.style.top =
+    Math.random() * 100 + "vh";
+
+  s.style.fontSize =
+    (8 + Math.random() * 10) + "px";
+
+  s.style.animationDuration =
+    (2 + Math.random() * 3) + "s";
+
+  document.body.appendChild(s);
+
+}
+
+
+/* ======================================================
+   SPARKLE CURSOR
+====================================================== */
+
+let lastSparkle = 0;
+
+
+document.addEventListener("pointermove", (e) => {
+
+  const now = Date.now();
+
+  if (now - lastSparkle < 60) return;
+
+  lastSparkle = now;
+
+
+  const sp = document.createElement("div");
+
+  sp.className = "sparkle";
+
+  sp.textContent = "✨";
+
+  sp.style.left =
+    e.clientX + "px";
+
+  sp.style.top =
+    e.clientY + "px";
+
+
+  document.body.appendChild(sp);
+
+
+  setTimeout(() => {
+
+    sp.remove();
+
+  }, 700);
+
+});
+
+
+/* ======================================================
+   PHOTO GALLERY
+====================================================== */
+
+const grid =
+  document.getElementById("photoGrid");
+
+
+photos.forEach(src => {
+
+  const img =
+    document.createElement("img");
+
+  img.src = src;
+
+  img.alt = "Memory photo";
+
+
+  img.onclick = () => {
+
+    openLightbox(src);
+
+  };
+
+
+  grid.appendChild(img);
+
+});
+
+
+function openLightbox(src) {
+
+  document.getElementById(
+    "lightboxImg"
+  ).src = src;
+
+
+  document.getElementById(
+    "lightbox"
+  ).classList.add("show");
+
+}
+
+
+function closeLightbox() {
+
+  document.getElementById(
+    "lightbox"
+  ).classList.remove("show");
+
+}
+
+
+/* ======================================================
+   MUSIC
+====================================================== */
+
+const audio =
+  document.getElementById("audio");
+
+
+audio.src = musicFile;
+
+
+let musicPlaying = false;
+
+
+function toggleMusic() {
+
+  document
+    .getElementById("player")
+    .classList.add("show");
+
+
+  if (musicPlaying) {
+
+    audio.pause();
+
+    document
+      .getElementById("playPauseBtn")
+      .textContent = "▶️";
+
+    musicPlaying = false;
+
+  }
+
+  else {
+
+    audio.play().catch(() => {
+
+      alert(
+        "Add your music file to the same folder as this HTML file."
+      );
+
+    });
+
+
+    document
+      .getElementById("playPauseBtn")
+      .textContent = "⏸️";
+
+    musicPlaying = true;
+
+  }
+
+}
+
+
+audio.addEventListener(
+  "timeupdate",
+  () => {
+
+    if (audio.duration) {
+
+      document
+        .getElementById("progressBar")
+        .style.width =
+        (audio.currentTime /
+          audio.duration) *
+        100 + "%";
+
+    }
+
+  }
+);
+
+
+audio.addEventListener(
+  "ended",
+  () => {
+
+    musicPlaying = false;
+
+    document
+      .getElementById("playPauseBtn")
+      .textContent = "▶️";
+
+  }
+);
+
+
+/* ======================================================
+   OPEN LETTER
+====================================================== */
+
+let letterOpened = false;
+
+
+function openLetter() {
+
+  const box =
+    document.getElementById("letterBox");
+
+
+  const photosSection =
+    document.getElementById(
+      "photosSection"
+    );
+
+
+  box.classList.add("show");
+
+
+  box.textContent = "";
+
+
+  let i = 0;
+
+
+  const cursor =
+    document.createElement("span");
+
+
+  cursor.className = "cursor";
+
+  cursor.textContent = " ";
+
+
+  function typeNext() {
+
+    if (i < letterText.length) {
+
+      box.textContent =
+        letterText.slice(0, i + 1);
+
+
+      box.appendChild(cursor);
+
+
+      i++;
+
+
+      setTimeout(
+        typeNext,
+        18
+      );
+
+    }
+
+    else {
+
+      cursor.remove();
+
+
+      /* =========================================
+         ⭐ SHOW PHOTOS ONLY AFTER LETTER FINISHES
+      ========================================= */
+
+      setTimeout(() => {
+
+        photosSection.classList.add("show");
+
+
+        photosSection.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+
+      }, 500);
+
+    }
+
+  }
+
+
+  typeNext();
+
+
+  launchCelebration();
+
+
+  letterOpened = true;
+
+}
+
+
+/* ======================================================
+   CELEBRATION
+====================================================== */
+
+function launchCelebration() {
+
+  const symbols = [
+
+    "💖",
+    "💕",
+    "💗",
+    "😘",
+    "💋",
+    "❤️",
+    "💓"
+
+  ];
+
+
+  for (let i = 0; i < 40; i++) {
+
+    setTimeout(() => {
+
+      const el =
+        document.createElement("div");
+
+
+      el.className =
+        "falling";
+
+
+      el.textContent =
+        symbols[
+          Math.floor(
+            Math.random() *
+            symbols.length
+          )
+        ];
+
+
+      el.style.left =
+        Math.random() * 100 + "vw";
+
+
+      el.style.animationDuration =
+        (3 + Math.random() * 3) + "s";
+
+
+      el.style.fontSize =
+        (18 + Math.random() * 20) + "px";
+
+
+      document.body.appendChild(el);
+
+
+      setTimeout(() => {
+
+        el.remove();
+
+      }, 7000);
+
+    }, i * 80);
+
+  }
+
+
+  const poppers = [
+
+    "🎉",
+    "🎊",
+    "✨"
+
+  ];
+
+
+  for (let i = 0; i < 25; i++) {
+
+    const el =
+      document.createElement("div");
+
+
+    el.className =
+      "popper";
+
+
+    el.textContent =
+      poppers[
+        Math.floor(
+          Math.random() *
+          poppers.length
+        )
+      ];
+
+
+    el.style.left = "50vw";
+
+    el.style.top = "20vh";
+
+
+    const angle =
+      Math.random() *
+      Math.PI *
+      2;
+
+
+    const distance =
+      150 +
+      Math.random() * 250;
+
+
+    el.style.setProperty(
+      "--x",
+      Math.cos(angle) *
+      distance +
+      "px"
+    );
+
+
+    el.style.setProperty(
+      "--y",
+      Math.sin(angle) *
+      distance +
+      "px"
+    );
+
+
+    document.body.appendChild(el);
+
+
+    setTimeout(() => {
+
+      el.remove();
+
+    }, 1300);
+
+  }
+
+}
+
+
+/* ======================================================
+   CAKE TAP
+====================================================== */
+
+function cakeTap() {
+
+  for (let i = 0; i < 10; i++) {
+
+    const el =
+      document.createElement("div");
+
+
+    el.className =
+      "balloon";
+
+
+    el.textContent =
+      "🎈";
+
+
+    el.style.left =
+      Math.random() * 100 + "vw";
+
+
+    el.style.setProperty(
+      "--drift",
+      (Math.random() * 100 - 50) +
+      "px"
+    );
+
+
+    el.style.animationDuration =
+      (4 + Math.random() * 3) +
+      "s";
+
+
+    el.style.fontSize =
+      (30 + Math.random() * 20) +
+      "px";
+
+
+    document.body.appendChild(el);
+
+
+    setTimeout(() => {
+
+      el.remove();
+
+    }, 8000);
+
+  }
+
+}
+
+
+/* ======================================================
+   MAKE A WISH
+====================================================== */
+
+const wishReplies = [
+
+  "May it come true 🌟",
+
+  "The universe is listening 💫",
+
+  "Sending it straight to the stars ⭐",
+
+  "Wish sealed with a kiss 💋",
+
+  "Consider it granted 🎀"
+
+];
+
+
+function makeWish() {
+
+  const input =
+    document.getElementById(
+      "wishInput"
+    );
+
+
+  const val =
+    input.value.trim();
+
+
+  if (!val) return;
+
+
+  const reply =
+    wishReplies[
+      Math.floor(
+        Math.random() *
+        wishReplies.length
+      )
+    ];
+
+
+  document.getElementById(
+    "wishReply"
+  ).textContent =
+    `"${val}" — ${reply}`;
+
+
+  input.value = "";
+
+
+  const el =
+    document.createElement("div");
+
+
+  el.className =
+    "popper";
+
+
+  el.textContent =
+    "🌠";
+
+
+  el.style.left =
+    "50vw";
+
+
+  el.style.top =
+    "75vh";
+
+
+  el.style.setProperty(
+    "--x",
+    "0px"
+  );
+
+
+  el.style.setProperty(
+    "--y",
+    "-200px"
+  );
+
+
+  document.body.appendChild(el);
+
+
+  setTimeout(() => {
+
+    el.remove();
+
+  }, 1300);
+
+}
+
+</script>
+
+</body>
+</html>
